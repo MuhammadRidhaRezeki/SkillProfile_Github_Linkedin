@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>README Forge — Turn a CV into a polished GitHub profile README</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <h1>🔨 README Forge</h1>
+    <p class="tagline">Fill in the form, get a clean badge-and-stats GitHub profile README. No sign-up, nothing leaves your browser.</p>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <section class="panel form-panel" aria-label="Profile details">
+    <h2>Your details</h2>
+
+    <fieldset>
+      <legend>Identity</legend>
+      <label>Display name
+        <input id="f-name" type="text" value="Muhammad Ridha Rezeki" placeholder="Your name">
+      </label>
+      <label>Headline — roles, separated by " · "
+        <input id="f-headline" type="text" value="Informatics Engineering Student · Web Developer · Backend Developer · AI Trainer" placeholder="Web Developer · AI Trainer">
+      </label>
+      <label>Location
+        <input id="f-location" type="text" value="Lhokseumawe, Indonesia" placeholder="City, Country">
+      </label>
+      <label>GitHub username <span class="hint">(used for the stats cards)</span>
+        <input id="f-ghuser" type="text" value="MuhammadRidhaRezeki" placeholder="octocat">
+      </label>
+      <label>About me
+        <textarea id="f-about" rows="4">Informatics Engineering student at Politeknik Negeri Lhokseumawe with a strong focus on web and backend development. I build web applications and academic database systems with PHP, Laravel, JavaScript, MySQL, and PostgreSQL, and I work as an AI Trainer at Outlier — evaluating and ranking AI model responses, writing and refining prompts, and fact-checking technical content.</textarea>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contact</legend>
+      <label>LinkedIn URL
+        <input id="f-linkedin" type="url" value="https://www.linkedin.com/in/muhammad-ridha-rezeki" placeholder="https://www.linkedin.com/in/you">
+      </label>
+      <label>Email
+        <input id="f-email" type="email" value="muhammadridharezki3@gmail.com" placeholder="you@example.com">
+      </label>
+      <label>X / Twitter handle <span class="hint">(without @, optional)</span>
+        <input id="f-x" type="text" value="" placeholder="yourhandle">
+      </label>
+      <label>Website <span class="hint">(optional)</span>
+        <input id="f-website" type="url" value="" placeholder="https://your-site.dev">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Tech stack <span class="hint">(comma-separated; known tools get their brand colour automatically)</span></legend>
+      <label>Technologies
+        <input id="f-stack" type="text" value="PHP, Laravel, JavaScript, HTML5, CSS3, MySQL, PostgreSQL, Bootstrap, Git, Postman" placeholder="PHP, Laravel, JavaScript, MySQL">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Experience <span class="hint">(one entry per block; bullets one per line)</span></legend>
+      <div class="entry" data-exp="0">
+        <label>Role <input class="exp-role" type="text" value="AI Trainer"></label>
+        <label>Organisation <input class="exp-org" type="text" value="Outlier"></label>
+        <label>Period <input class="exp-period" type="text" value="February 2026 – May 2026"></label>
+        <label>Highlights <textarea class="exp-bullets" rows="3">Evaluate and compare AI model responses based on accuracy, completeness, clarity, and compliance with instructions
+Write and refine prompts and high-quality reference answers to support Indonesian language model training
+Fact-check to identify hallucinations, logic errors, and content that does not meet guidelines</textarea></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Featured projects <span class="hint">(one per line: Name — description)</span></legend>
+      <label>Projects
+        <textarea id="f-projects" rows="4">WiFi Provider Management System — Web application supporting a WiFi provider's service management: role-based access (Admin, Technician, User), service data management, and provider service workflows
+Mini Blog Web Application — Laravel · MySQL · Bootstrap blog with authentication (login & registration), article CRUD, MVC architecture, and a relational database for users and articles
+PHP Native CRUD Application — PHP · MySQL system for creating, reading, updating, and deleting data, with a simple interface for data input and display
+Academic Database System — PostgreSQL database design for courses and student grades, structured SQL operations, and reporting queries including total credits and grade calculations</textarea>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Education <span class="hint">(one per line: School — degree (period))</span></legend>
+      <label>Education
+        <textarea id="f-education" rows="2">Politeknik Negeri Lhokseumawe — D4 (Bachelor of Applied Science), Informatics Engineering (2024 – present)
+SMA Negeri 1 Lhokseumawe — Science major (IPA) (2021 – 2024)</textarea>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Certifications <span class="hint">(one per line, optional)</span></legend>
+      <label>Certifications
+        <textarea id="f-certs" rows="1">Junior Web Developer — Digital Talent Scholarship (Kominfo)</textarea>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Style</legend>
+      <label>Template
+        <select id="f-template">
+          <option value="clean" selected>Clean — badges, centred header, stats table</option>
+          <option value="minimal">Minimal — plain headings, no stats cards</option>
+        </select>
+      </label>
+      <label>Stats theme
+        <select id="f-theme">
+          <option value="radical" selected>radical</option>
+          <option value="dark">dark</option>
+          <option value="default">default</option>
+          <option value="tokyonight">tokyonight</option>
+          <option value="dracula">dracula</option>
+          <option value="github_dark">github_dark</option>
+        </select>
+      </label>
+      <label class="check"><input id="f-stats" type="checkbox" checked> Include GitHub stats + streak cards</label>
+      <label class="check"><input id="f-closing" type="checkbox" checked> Include "open to work" closing line</label>
+    </fieldset>
+
+    <div class="actions">
+      <button id="btn-sample" type="button">Load sample</button>
+      <button id="btn-clear" type="button">Clear form</button>
+    </div>
+  </section>
+
+  <section class="panel output-panel" aria-label="Generated README">
+    <div class="output-head">
+      <h2>Generated README</h2>
+      <div class="tabs" role="tablist">
+        <button id="tab-preview" class="tab active" type="button" role="tab" aria-selected="true">Preview</button>
+        <button id="tab-markdown" class="tab" type="button" role="tab" aria-selected="false">Markdown</button>
+      </div>
+    </div>
+
+    <div id="pane-preview" class="preview" role="tabpanel"></div>
+    <pre id="pane-markdown" class="markdown" role="tabpanel" hidden></pre>
+
+    <div class="actions output-actions">
+      <button id="btn-copy" type="button" class="primary">Copy Markdown</button>
+      <button id="btn-download" type="button" class="primary">Download README.md</button>
+      <span id="copy-status" class="status" aria-live="polite"></span>
+    </div>
+    <p class="howto">To use it: copy the Markdown, paste it into the <code>README.md</code> of the special repository named exactly like your GitHub username, and commit.</p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>README Forge — MIT licensed. Badge colours come from <a href="https://shields.io">shields.io</a>; stats cards from <a href="https://github.com/anuraghazra/github-readme-stats">github-readme-stats</a> and <a href="https://github.com/DenverCoder1/github-readme-streak-stats">github-readme-streak-stats</a>.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
